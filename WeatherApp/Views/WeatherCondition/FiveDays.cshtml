@@ -1,0 +1,53 @@
+﻿@model List<WeatherApp.Models.WeatherCondition>
+
+<div class="container p-2">
+    <div class="row pt-4">
+        <div class="col-4">
+            <h2 class="text-dark">Прогноз погоды в Санкт-Петербурге на 5 дней</h2>
+        </div>
+    </div>
+    <br />
+
+    <table class="table table-dark table-bordered table-striped" style="width:80%; height:auto">
+        <thead>
+            <tr>
+                <th>
+                    Температура, °С
+                </th>
+                <th>
+                    Температура, °С
+                </th>
+                <th class="align-middle">
+                    Описание
+                </th>
+                <th>
+                    Давление, мм рт.ст.
+                </th>
+                <th>
+                    Влажность, %
+                </th>
+                <th>
+                    Ветер, м/с
+                </th>
+                <th>
+                    Ощущается как, °С
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td width="12%">@item.ForecastDate</td>
+                <td width="12%">@item.Temp</td>
+                <td width="28%">@item.Description</td>
+                <td width="12%">@item.Pressure</td>
+                <td width="12%">@item.Humidity</td>
+                <td width="12%">@item.WindSpeed</td>
+                <td width="12%">@item.TempFeelsLike</td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
