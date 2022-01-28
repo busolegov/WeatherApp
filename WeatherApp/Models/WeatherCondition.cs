@@ -19,7 +19,7 @@ namespace WeatherApp.Models
         {
             Temp = forecast.Main.Temp;
             TempFeelsLike = forecast.Main.FeelsLike;
-            Pressure = forecast.Main.Pressure;
+            Pressure = (long?)(forecast.Main.Pressure * 0.75);
             Description = forecast.Weather[0].Description.ToString();
             WindSpeed = forecast.Wind.Speed;
             Humidity = forecast.Main.Humidity;
@@ -33,7 +33,7 @@ namespace WeatherApp.Models
                 {
                     Temp = item.Main.Temp,
                     TempFeelsLike = item.Main.FeelsLike,
-                    Pressure = item.Main.Pressure,
+                    Pressure = (long?)(item.Main.Pressure * 0.75),
                     Description = item.Weather[0].Description.ToString(),
                     WindSpeed = item.Wind.Speed,
                     Humidity = item.Main.Humidity,

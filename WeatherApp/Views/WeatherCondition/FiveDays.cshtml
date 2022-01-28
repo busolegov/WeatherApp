@@ -8,11 +8,14 @@
     </div>
     <br />
 
-    <table class="table table-dark table-bordered table-striped" style="width:80%; height:auto">
+    <table class="table table-dark table-bordered table-striped" style="width:100%; height:auto">
         <thead>
             <tr>
-                <th>
-                    Температура, °С
+                <th class="align-middle">
+                    День недели
+                </th>
+                <th class="align-middle">
+                    Дата
                 </th>
                 <th>
                     Температура, °С
@@ -38,16 +41,16 @@
             @foreach (var item in Model)
             {
             <tr>
-                <td width="12%">@item.ForecastDate</td>
-                <td width="12%">@item.Temp</td>
-                <td width="28%">@item.Description</td>
+                <td width="12%">@item.ForecastDate.DayOfWeek</td>
+                <td width="12%">@item.ForecastDate.ToString("dd/MM/yy hh':'mm")</td>
+                <td width="12%">@item.Temp.Value.ToString("0.0")</td>
+                <td width="16%">@item.Description</td>
                 <td width="12%">@item.Pressure</td>
                 <td width="12%">@item.Humidity</td>
                 <td width="12%">@item.WindSpeed</td>
-                <td width="12%">@item.TempFeelsLike</td>
+                <td width="12%">@item.TempFeelsLike.Value.ToString("0.0")</td>
             </tr>
             }
-
         </tbody>
     </table>
 </div>

@@ -37,12 +37,12 @@
         </thead>
         <tbody>
             <tr>
-                <td width="15%">@Model.Temp</td>
+                <td width="15%">@Model.Temp.Value.ToString("0.0")</td>
                 <td width="25%">@Model.Description</td>
                 <td width="15%">@Model.Pressure</td>
                 <td width="15%">@Model.Humidity</td>
                 <td width="15%">@Model.WindSpeed</td>
-                <td width="15%">@Model.TempFeelsLike</td>
+                <td width="15%">@Model.TempFeelsLike.Value.ToString("0.0")</td>
             </tr>
         </tbody>
     </table>
