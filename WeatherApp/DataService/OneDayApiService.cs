@@ -30,13 +30,29 @@ namespace WeatherApp.Data
 
             using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
             {
-                _jsonWeather = await reader.ReadToEndAsync();
+                try
+                {
+                    _jsonWeather = await reader.ReadToEndAsync();
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.Message);
+                }
             }
         }
 
         public void GetForecastFromJson() 
         {
-            OneDayForecast = JsonConvert.DeserializeObject<OneDayForecast>(_jsonWeather);
+            try
+            {
+                OneDayForecast = JsonConvert.DeserializeObject<OneDayForecast>(_jsonWeather);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
