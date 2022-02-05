@@ -24,33 +24,17 @@ namespace WeatherApp.DataService
 
         public void GetForecastFromJson()
         {
-            try
-            {
-                FiveDaysForecast = JsonConvert.DeserializeObject<FiveDaysForecast>(_jsonWeather);
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
+            FiveDaysForecast = JsonConvert.DeserializeObject<FiveDaysForecast>(_jsonWeather);
         }
 
         public async Task GetJsonAsync()
         {
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_fiveDaysPath);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_fiveDaysPath);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                {
-                    _jsonWeather = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception ex)
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
             {
-
-                throw new Exception(ex.Message);
+                _jsonWeather = await reader.ReadToEndAsync();
             }
         }
     }

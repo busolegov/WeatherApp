@@ -19,10 +19,6 @@ namespace WeatherApp.Data
 
         public async Task SaveWeatherAsync(WeatherCondition weatherCondition) 
         {
-            if (weatherCondition == null)
-            {
-                throw new Exception("Прогноз погоды не может быть null");
-            }
             _dbContext.Add(weatherCondition);
             await _dbContext.SaveChangesAsync();
         }
@@ -32,21 +28,12 @@ namespace WeatherApp.Data
         public async Task<WeatherCondition> GetWeatherByIDAsync(int id) 
         {
             WeatherCondition condition = await _dbContext.WeatherConditions.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (condition == null)
-            {
-                throw new Exception("Прогноз погоды не найден в БД");
-            }
             return condition;
         }
 
         public IEnumerable<WeatherCondition> GetWeatherConditions(List <WeatherCondition> list) 
         {
             IEnumerable<WeatherCondition> result = _dbContext.WeatherConditions.TakeLast(list.Count);
-            if (result == null)
-            {
-                throw new Exception("Прогнозs погоды не найдены в БД");
-            }
             return result;
         }
 
